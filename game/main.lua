@@ -17,6 +17,8 @@ local function resize(width, height)
     maid64.y = math.floor(maid64.y);
 end
 
+local view
+
 function love.load()
     love.graphics.setDefaultFilter("nearest", "nearest")
     love.graphics.setLineStyle('rough')
@@ -25,6 +27,35 @@ function love.load()
 
     maid64.setup(w, h)
     resize(love.graphics.getDimensions())
+
+    view = {
+        left = {
+            {
+                north = {
+                    wall = true,
+                    door = "default",
+                },
+                east = {
+                    wall = true,
+                    door = "default",
+                },
+                south = {
+                    wall = true,
+                    door = "default",
+                },
+                west = {
+                    wall = true,
+                    door = "default",
+                },
+            }
+        },
+        front = {
+
+        },
+        right = {
+
+        }
+    }
 end
 
 function love.update(dt)
@@ -39,8 +70,9 @@ function love.draw()
     --love.graphics.translate(0, 100)
 
     love.graphics.setColor(1, 1, 1)
-    -- draw left wall
-    do
+
+    -- draw west wall
+    if true then
         local pos = { 32, -32 }
         pos[3] = pos[1] + 64
         pos[4] = pos[2] + 64
@@ -51,19 +83,171 @@ function love.draw()
         pos[9] = pos[1]
         pos[10] = pos[2]
         love.graphics.line(pos)
+
+        -- door
+        if true then
+            local pos = { 32 + 16, -32 + 32 }
+            pos[3] = pos[1] + 32
+            pos[4] = pos[2] + 32
+            pos[5] = pos[3]
+            pos[6] = pos[4] + 128 + 16
+            pos[7] = pos[1]
+            pos[8] = pos[6] + 32
+            pos[9] = pos[1]
+            pos[10] = pos[2]
+            love.graphics.line(pos)
+        end
     end
-    -- draw right wall
-    do
-        local pos = { 320 - 32 + 1, -32 }
+    -- draw east wall
+    if true then
+        local pos = { 320 - 32 + 1, -32 - 1 }
         pos[3] = pos[1] - 64
-        pos[4] = pos[2] + 64 - 1
+        pos[4] = pos[2] + 64
         pos[5] = pos[3]
         pos[6] = pos[4] + 128 + 2
-        pos[7] = pos[5] + 64
-        pos[8] = pos[6] + 64 - 1
+        pos[7] = pos[1]
+        pos[8] = pos[6] + 64
         pos[9] = pos[1]
         pos[10] = pos[2]
         love.graphics.line(pos)
+
+        -- door
+        if true then
+            local pos = { 320 - 32 + 1 - 16, -32 - 1 + 32 }
+            pos[3] = pos[1] - 32
+            pos[4] = pos[2] + 32
+            pos[5] = pos[3]
+            pos[6] = pos[4] + 128 + 16 + 2
+            pos[7] = pos[1]
+            pos[8] = pos[6] + 32
+            pos[9] = pos[1]
+            pos[10] = pos[2]
+            love.graphics.line(pos)
+        end
+    end
+
+    -- draw west wall front 1
+    if false then
+        local pos = { 96, 32 }
+        pos[3] = pos[1] + 32
+        pos[4] = pos[2] + 32
+        pos[5] = pos[3]
+        pos[6] = pos[4] + 64
+        pos[7] = pos[5] - 32
+        pos[8] = pos[6] + 32
+        pos[9] = pos[1]
+        pos[10] = pos[2]
+        love.graphics.line(pos)
+    end
+
+    -- draw east wall front 1
+    if false then
+        local pos = { 320 - 96 + 1, 32 - 1 }
+        pos[3] = pos[1] - 32
+        pos[4] = pos[2] + 32
+        pos[5] = pos[3]
+        pos[6] = pos[4] + 64 + 2
+        pos[7] = pos[5] + 32
+        pos[8] = pos[6] + 32
+        pos[9] = pos[1]
+        pos[10] = pos[2]
+        love.graphics.line(pos)
+    end
+    
+    -- draw north wall front 1
+    if false then
+        local pos = { 96, 32 }
+        pos[3] = pos[1] + 128 + 1
+        pos[4] = pos[2]
+        pos[5] = pos[3]
+        pos[6] = pos[4] + 128 + 1
+        pos[7] = pos[5] - 128 - 1
+        pos[8] = pos[6]
+        pos[9] = pos[1]
+        pos[10] = pos[2]
+        love.graphics.line(pos)
+
+        -- door
+        if true then
+            local pos = { 96 + 16, 32 + 16 }
+            pos[3] = pos[1] + 96 + 1
+            pos[4] = pos[2]
+            pos[5] = pos[3]
+            pos[6] = pos[4] + 112 + 1
+            pos[7] = pos[5] - 96 - 1
+            pos[8] = pos[6]
+            pos[9] = pos[1]
+            pos[10] = pos[2]
+            love.graphics.line(pos[1], pos[2], pos[3] - 1, pos[4])
+            love.graphics.line(pos[1], pos[2], pos[7], pos[8])
+            love.graphics.line(pos[3], pos[4], pos[5], pos[6])
+            --love.graphics.line(pos)
+            --love.graphics.line(pos)
+        end
+    end
+    
+    -- draw north wall left 1
+    if false then
+        local pos = { 96 - 128 - 1, 32 }
+        pos[3] = pos[1] + 128 + 1
+        pos[4] = pos[2]
+        pos[5] = pos[3]
+        pos[6] = pos[4] + 128 + 1
+        pos[7] = pos[5] - 128 - 1
+        pos[8] = pos[6]
+        pos[9] = pos[1]
+        pos[10] = pos[2]
+        love.graphics.line(pos)
+
+        -- door
+        if true then
+            local pos = { 96 - 128 - 1 + 16, 32 + 16 }
+            pos[3] = pos[1] + 96 + 1
+            pos[4] = pos[2]
+            pos[5] = pos[3]
+            pos[6] = pos[4] + 112 + 1
+            pos[7] = pos[5] - 96 - 1
+            pos[8] = pos[6]
+            pos[9] = pos[1]
+            pos[10] = pos[2]
+            love.graphics.line(pos[1], pos[2], pos[3] - 1, pos[4])
+            love.graphics.line(pos[1], pos[2], pos[7], pos[8])
+            love.graphics.line(pos[3], pos[4], pos[5], pos[6])
+            --love.graphics.line(pos)
+            --love.graphics.line(pos)
+        end
+    end
+    
+    -- draw north wall right 1
+    if false then
+        local pos = { 96 + 128 + 1, 32 }
+        pos[3] = pos[1] + 128 + 1
+        pos[4] = pos[2]
+        pos[5] = pos[3]
+        pos[6] = pos[4] + 128 + 1
+        pos[7] = pos[5] - 128 - 1
+        pos[8] = pos[6]
+        pos[9] = pos[1]
+        pos[10] = pos[2]
+        love.graphics.line(pos)
+
+        -- door
+        if true then
+            local pos = { 96 + 128 + 1 + 16, 32 + 16 }
+            pos[3] = pos[1] + 96 + 1
+            pos[4] = pos[2]
+            pos[5] = pos[3]
+            pos[6] = pos[4] + 112 + 1
+            pos[7] = pos[5] - 96 - 1
+            pos[8] = pos[6]
+            pos[9] = pos[1]
+            pos[10] = pos[2]
+            love.graphics.line(pos[1], pos[2], pos[3] - 1, pos[4])
+            love.graphics.line(pos[1], pos[2], pos[7], pos[8])
+            love.graphics.line(pos[3], pos[4], pos[5], pos[6])
+            --love.graphics.line(pos)
+            --love.graphics.line(pos)
+        end
     end
 
     love.graphics.pop()
