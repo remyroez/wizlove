@@ -127,22 +127,36 @@ function love.draw()
     end
 
     -- draw west wall front 1
-    if false then
+    if true then
         local pos = { 96, 32 }
         pos[3] = pos[1] + 32
         pos[4] = pos[2] + 32
         pos[5] = pos[3]
         pos[6] = pos[4] + 64
-        pos[7] = pos[5] - 32
+        pos[7] = pos[1]
         pos[8] = pos[6] + 32
         pos[9] = pos[1]
         pos[10] = pos[2]
         love.graphics.line(pos)
+
+        -- door
+        if true then
+            local pos = { 96 + 8, 32 + 16 }
+            pos[3] = pos[1] + 16
+            pos[4] = pos[2] + 16
+            pos[5] = pos[3]
+            pos[6] = pos[4] + 64 + 8
+            pos[7] = pos[1]
+            pos[8] = pos[6] + 32 - 16
+            pos[9] = pos[1] - 1
+            pos[10] = pos[2]
+            love.graphics.line(pos)
+        end
     end
 
     -- draw east wall front 1
-    if false then
-        local pos = { 320 - 96 + 1, 32 - 1 }
+    if true then
+        local pos = { 320 + 1 - 96, 32 - 1 }
         pos[3] = pos[1] - 32
         pos[4] = pos[2] + 32
         pos[5] = pos[3]
@@ -152,6 +166,20 @@ function love.draw()
         pos[9] = pos[1]
         pos[10] = pos[2]
         love.graphics.line(pos)
+
+        -- door
+        if true then
+            local pos = { 320 - 96 - 8, 32 + 16 }
+            pos[3] = pos[1] - 16 + 1
+            pos[4] = pos[2] + 16 - 1
+            pos[5] = pos[3]
+            pos[6] = pos[4] + 64 + 2 + 8
+            pos[7] = pos[1]
+            pos[8] = pos[6] + 32 - 16 - 1
+            pos[9] = pos[1] + 1
+            pos[10] = pos[2]
+            love.graphics.line(pos)
+        end
     end
     
     -- draw north wall front 1
