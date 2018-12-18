@@ -66,20 +66,8 @@ function love.draw()
     maid64.start()
     love.graphics.clear(0, 0, 0)
 
-    love.graphics.push()
-    --love.graphics.translate(0, 100)
+    draw_maze()
 
-    love.graphics.setColor(1, 1, 1)
-
-    --draw_wall_origin()
-    --draw_wall_origin_left()
-    --draw_wall_origin_right()
-    
-    draw_wall_front_1()
-    draw_wall_front_1_left()
-    draw_wall_front_1_right()
-
-    love.graphics.pop()
     --love.graphics.line(0, 32 - 96, 96, 32)
 ---[[
     love.graphics.setColor(0, 0, 0)
@@ -90,6 +78,21 @@ function love.draw()
     love.graphics.setColor(1, 1, 1)
 --]]
     maid64.finish()
+end
+
+function draw_maze()
+    love.graphics.push()
+    --love.graphics.translate(0, -100)
+
+    draw_wall_front_1_left()
+    draw_wall_front_1_right()
+    draw_wall_front_1()
+
+    draw_wall_origin_left()
+    draw_wall_origin_right()
+    draw_wall_origin()
+
+    love.graphics.pop()
 end
 
 function draw_wall_origin()
@@ -104,6 +107,11 @@ function draw_wall_origin()
         pos[8] = pos[6] + 64
         pos[9] = pos[1]
         pos[10] = pos[2]
+
+        love.graphics.setColor(0, 0, 0)
+        love.graphics.rectangle('fill', pos[1], pos[2], pos[5] - pos[1], pos[8] - pos[2])
+
+        love.graphics.setColor(1, 1, 1)
         love.graphics.line(pos)
 
         -- door
@@ -132,6 +140,11 @@ function draw_wall_origin()
         pos[8] = pos[6] + 64
         pos[9] = pos[1]
         pos[10] = pos[2]
+
+        love.graphics.setColor(0, 0, 0)
+        love.graphics.rectangle('fill', pos[1], pos[2], pos[5] - pos[1], pos[8] - pos[2])
+
+        love.graphics.setColor(1, 1, 1)
         love.graphics.line(pos)
 
         -- door
@@ -160,6 +173,11 @@ function draw_wall_origin()
         pos[8] = pos[6]
         pos[9] = pos[1]
         pos[10] = pos[2]
+
+        love.graphics.setColor(0, 0, 0)
+        love.graphics.rectangle('fill', pos[1], pos[2], pos[5] - pos[1], pos[8] - pos[2])
+
+        love.graphics.setColor(1, 1, 1)
         love.graphics.line(pos)
 
         -- door
@@ -194,6 +212,11 @@ function draw_wall_origin_left()
         pos[8] = pos[6]
         pos[9] = pos[1]
         pos[10] = pos[2]
+
+        love.graphics.setColor(0, 0, 0)
+        love.graphics.rectangle('fill', pos[1], pos[2], pos[5] - pos[1], pos[8] - pos[2])
+
+        love.graphics.setColor(1, 1, 1)
         love.graphics.line(pos)
 
         -- door
@@ -228,6 +251,11 @@ function draw_wall_origin_right()
         pos[8] = pos[6]
         pos[9] = pos[1]
         pos[10] = pos[2]
+
+        love.graphics.setColor(0, 0, 0)
+        love.graphics.rectangle('fill', pos[1], pos[2], pos[5] - pos[1], pos[8] - pos[2])
+
+        love.graphics.setColor(1, 1, 1)
         love.graphics.line(pos)
 
         -- door
@@ -262,6 +290,11 @@ function draw_wall_front_1()
         pos[8] = pos[6] + 32
         pos[9] = pos[1]
         pos[10] = pos[2]
+
+        love.graphics.setColor(0, 0, 0)
+        love.graphics.rectangle('fill', pos[1], pos[2] - 1, pos[5] - pos[1], pos[8] - pos[2] + 2)
+
+        love.graphics.setColor(1, 1, 1)
         love.graphics.line(pos)
 
         -- door
@@ -290,6 +323,11 @@ function draw_wall_front_1()
         pos[8] = pos[6] + 32
         pos[9] = pos[1]
         pos[10] = pos[2]
+
+        love.graphics.setColor(0, 0, 0)
+        love.graphics.rectangle('fill', pos[1], pos[2], pos[5] - pos[1], pos[8] - pos[2])
+
+        love.graphics.setColor(1, 1, 1)
         love.graphics.line(pos)
 
         -- door
@@ -318,6 +356,11 @@ function draw_wall_front_1()
         pos[8] = pos[6]
         pos[9] = pos[1]
         pos[10] = pos[2]
+
+        love.graphics.setColor(0, 0, 0)
+        love.graphics.rectangle('fill', pos[1], pos[2], pos[5] - pos[1], pos[8] - pos[2])
+
+        love.graphics.setColor(1, 1, 1)
         love.graphics.line(pos)
 
         -- door
@@ -352,6 +395,11 @@ function draw_wall_front_1_left()
         pos[8] = pos[6] + 32
         pos[9] = pos[1]
         pos[10] = pos[2]
+
+        love.graphics.setColor(0, 0, 0)
+        love.graphics.rectangle('fill', pos[1], pos[2], pos[5] - pos[1], pos[8] - pos[2])
+
+        love.graphics.setColor(1, 1, 1)
         love.graphics.line(pos)
 
         -- door
@@ -380,6 +428,11 @@ function draw_wall_front_1_left()
         pos[8] = pos[6]
         pos[9] = pos[1]
         pos[10] = pos[2]
+
+        love.graphics.setColor(0, 0, 0)
+        love.graphics.rectangle('fill', pos[1], pos[2], pos[5] - pos[1], pos[8] - pos[2])
+
+        love.graphics.setColor(1, 1, 1)
         love.graphics.line(pos)
 
         -- door
@@ -414,6 +467,11 @@ function draw_wall_front_1_right()
         pos[8] = pos[6] + 32
         pos[9] = pos[1]
         pos[10] = pos[2]
+
+        love.graphics.setColor(0, 0, 0)
+        love.graphics.rectangle('fill', pos[1], pos[2], pos[5] - pos[1], pos[8] - pos[2])
+
+        love.graphics.setColor(1, 1, 1)
         love.graphics.line(pos)
 
         -- door
@@ -442,6 +500,11 @@ function draw_wall_front_1_right()
         pos[8] = pos[6]
         pos[9] = pos[1]
         pos[10] = pos[2]
+
+        love.graphics.setColor(0, 0, 0)
+        love.graphics.rectangle('fill', pos[1], pos[2], pos[5] - pos[1], pos[8] - pos[2])
+
+        love.graphics.setColor(1, 1, 1)
         love.graphics.line(pos)
 
         -- door
