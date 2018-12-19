@@ -32,8 +32,8 @@ function love.load()
         left = {
             {
                 north = {
-                    wall = true,
-                    door = "default",
+                    wall = false,
+                    door = false,
                 },
                 east = {
                     wall = true,
@@ -47,13 +47,101 @@ function love.load()
                     wall = true,
                     door = "default",
                 },
+            },
+            {
+                north = {
+                    wall = true,
+                    door = false,
+                },
+                east = {
+                    wall = true,
+                    door = "default",
+                },
+                south = {
+                    wall = true,
+                    door = "default",
+                },
+                west = {
+                    wall = false,
+                    door = "default",
+                },
             }
         },
         front = {
-
+            {
+                north = {
+                    wall = true,
+                    door = "default",
+                },
+                east = {
+                    wall = false,
+                    door = false,
+                },
+                south = {
+                    wall = true,
+                    door = "default",
+                },
+                west = {
+                    wall = false,
+                    door = false,
+                },
+            },
+            {
+                north = {
+                    wall = true,
+                    door = false,
+                },
+                east = {
+                    wall = false,
+                    door = false,
+                },
+                south = {
+                    wall = true,
+                    door = "default",
+                },
+                west = {
+                    wall = false,
+                    door = false,
+                },
+            }
         },
         right = {
-
+            {
+                north = {
+                    wall = false,
+                    door = false,
+                },
+                east = {
+                    wall = true,
+                    door = "default",
+                },
+                south = {
+                    wall = true,
+                    door = "default",
+                },
+                west = {
+                    wall = true,
+                    door = "default",
+                },
+            },
+            {
+                north = {
+                    wall = true,
+                    door = false,
+                },
+                east = {
+                    wall = false,
+                    door = "default",
+                },
+                south = {
+                    wall = true,
+                    door = "default",
+                },
+                west = {
+                    wall = false,
+                    door = "default",
+                },
+            }
         }
     }
 end
@@ -66,7 +154,7 @@ function love.draw()
     maid64.start()
     love.graphics.clear(0, 0, 0)
 
-    draw_maze()
+    draw_maze(view)
 
     --love.graphics.line(0, 32 - 96, 96, 32)
 ---[[
@@ -80,24 +168,45 @@ function love.draw()
     maid64.finish()
 end
 
-function draw_maze()
+function draw_maze(view)
+    view = view or {}
+    view.front = view.front or {}
+    view.left = view.left or {}
+    view.right = view.right or {}
+
     love.graphics.push()
     --love.graphics.translate(0, -100)
 
-    draw_wall_front_1_left()
-    draw_wall_front_1_right()
-    draw_wall_front_1()
+    draw_wall_front_1_left(view.left[2])
+    draw_wall_front_1_right(view.right[2])
+    draw_wall_front_1(view.front[2])
 
-    draw_wall_origin_left()
-    draw_wall_origin_right()
-    draw_wall_origin()
+    draw_wall_origin_left(view.left[1])
+    draw_wall_origin_right(view.right[1])
+    draw_wall_origin(view.front[1])
 
     love.graphics.pop()
 end
 
-function draw_wall_origin()
+function get_wall(side)
+    if type(side) == 'table' then
+        return side.wall
+    end
+    return false
+end
+
+function get_door(side)
+    if type(side) == 'table' then
+        return side.door
+    end
+    return false
+end
+
+function draw_wall_origin(square)
+    square = square or {}
+
     -- draw west wall
-    if true then
+    if get_wall(square.west) then
         local pos = { 32, -32 }
         pos[3] = pos[1] + 64
         pos[4] = pos[2] + 64
@@ -115,7 +224,7 @@ function draw_wall_origin()
         love.graphics.line(pos)
 
         -- door
-        if true then
+        if get_door(square.west) then
             local pos = { 32 + 16, -32 + 32 }
             pos[3] = pos[1] + 32
             pos[4] = pos[2] + 32
@@ -130,7 +239,7 @@ function draw_wall_origin()
     end
     
     -- draw east wall
-    if true then
+    if get_wall(square.east) then
         local pos = { 320 - 32 + 1, -32 - 1 }
         pos[3] = pos[1] - 64
         pos[4] = pos[2] + 64
@@ -148,7 +257,7 @@ function draw_wall_origin()
         love.graphics.line(pos)
 
         -- door
-        if true then
+        if get_door(square.east) then
             local pos = { 320 - 32 + 1 - 16, -32 - 1 + 32 }
             pos[3] = pos[1] - 32
             pos[4] = pos[2] + 32
@@ -163,7 +272,7 @@ function draw_wall_origin()
     end
     
     -- draw north wall
-    if true then
+    if get_wall(square.north) then
         local pos = { 96, 32 }
         pos[3] = pos[1] + 128 + 1
         pos[4] = pos[2]
@@ -181,7 +290,7 @@ function draw_wall_origin()
         love.graphics.line(pos)
 
         -- door
-        if true then
+        if get_door(square.north) then
             local pos = { 96 + 16, 32 + 16 }
             pos[3] = pos[1] + 96 + 1
             pos[4] = pos[2]
@@ -200,9 +309,11 @@ function draw_wall_origin()
     end
 end
 
-function draw_wall_origin_left()
+function draw_wall_origin_left(square)
+    square = square or {}
+
     -- draw north wall left 1
-    if true then
+    if get_wall(square.north) then
         local pos = { 96 - 128 - 1, 32 }
         pos[3] = pos[1] + 128 + 1
         pos[4] = pos[2]
@@ -220,7 +331,7 @@ function draw_wall_origin_left()
         love.graphics.line(pos)
 
         -- door
-        if true then
+        if get_door(square.north) then
             local pos = { 96 - 128 - 1 + 16, 32 + 16 }
             pos[3] = pos[1] + 96 + 1
             pos[4] = pos[2]
@@ -239,9 +350,11 @@ function draw_wall_origin_left()
     end
 end
 
-function draw_wall_origin_right()
+function draw_wall_origin_right(square)
+    square = square or {}
+
     -- draw north wall right 1
-    if true then
+    if get_wall(square.north) then
         local pos = { 96 + 128 + 1, 32 }
         pos[3] = pos[1] + 128 + 1
         pos[4] = pos[2]
@@ -259,7 +372,7 @@ function draw_wall_origin_right()
         love.graphics.line(pos)
 
         -- door
-        if true then
+        if get_door(square.north) then
             local pos = { 96 + 128 + 1 + 16, 32 + 16 }
             pos[3] = pos[1] + 96 + 1
             pos[4] = pos[2]
@@ -278,9 +391,11 @@ function draw_wall_origin_right()
     end
 end
 
-function draw_wall_front_1()
+function draw_wall_front_1(square)
+    square = square or {}
+
     -- draw west wall front 1
-    if true then
+    if get_wall(square.west) then
         local pos = { 96, 32 }
         pos[3] = pos[1] + 32
         pos[4] = pos[2] + 32
@@ -298,7 +413,7 @@ function draw_wall_front_1()
         love.graphics.line(pos)
 
         -- door
-        if true then
+        if get_door(square.west) then
             local pos = { 96 + 8, 32 + 16 }
             pos[3] = pos[1] + 16
             pos[4] = pos[2] + 16
@@ -313,7 +428,7 @@ function draw_wall_front_1()
     end
 
     -- draw east wall front 1
-    if true then
+    if get_wall(square.east) then
         local pos = { 320 + 1 - 96, 32 - 1 }
         pos[3] = pos[1] - 32
         pos[4] = pos[2] + 32
@@ -331,7 +446,7 @@ function draw_wall_front_1()
         love.graphics.line(pos)
 
         -- door
-        if true then
+        if get_door(square.east) then
             local pos = { 320 - 96 - 8, 32 + 16 }
             pos[3] = pos[1] - 16 + 1
             pos[4] = pos[2] + 16 - 1
@@ -346,7 +461,7 @@ function draw_wall_front_1()
     end
 
     -- draw north wall front 1
-    if true then
+    if get_wall(square.north) then
         local pos = { 128, 64 }
         pos[3] = pos[1] + 64 + 1
         pos[4] = pos[2]
@@ -364,7 +479,7 @@ function draw_wall_front_1()
         love.graphics.line(pos)
 
         -- door
-        if true then
+        if get_door(square.north) then
             local pos = { 128 + 8, 64 + 8 }
             pos[3] = pos[1] + 48 + 1
             pos[4] = pos[2]
@@ -381,11 +496,13 @@ function draw_wall_front_1()
     end
 end
 
-function draw_wall_front_1_left()
+function draw_wall_front_1_left(square)
+    square = square or {}
+
     local offset = -64
 
     -- draw west wall front 1
-    if false then
+    if get_wall(square.west) then
         local pos = { 96 + offset, 32 }
         pos[3] = pos[1] + 32
         pos[4] = pos[2] + 32
@@ -403,7 +520,7 @@ function draw_wall_front_1_left()
         love.graphics.line(pos)
 
         -- door
-        if true then
+        if get_door(square.west) then
             local pos = { 96 + 8 + offset, 32 + 16 }
             pos[3] = pos[1] + 16
             pos[4] = pos[2] + 16
@@ -418,7 +535,7 @@ function draw_wall_front_1_left()
     end
 
     -- draw north wall front 1
-    if true then
+    if get_wall(square.north) then
         local pos = { 128 + offset, 64 }
         pos[3] = pos[1] + 64
         pos[4] = pos[2]
@@ -436,7 +553,7 @@ function draw_wall_front_1_left()
         love.graphics.line(pos)
 
         -- door
-        if true then
+        if get_door(square.north) then
             local pos = { 128 + 8 + offset, 64 + 8 }
             pos[3] = pos[1] + 48
             pos[4] = pos[2]
@@ -453,11 +570,13 @@ function draw_wall_front_1_left()
     end
 end
 
-function draw_wall_front_1_right()
+function draw_wall_front_1_right(square)
+    square = square or {}
+
     local offset = 64 + 1
 
     -- draw east wall front 1
-    if false then
+    if get_wall(square.east) then
         local pos = { 320 + 1 - 96 + offset, 32 - 1 }
         pos[3] = pos[1] - 32
         pos[4] = pos[2] + 32
@@ -475,7 +594,7 @@ function draw_wall_front_1_right()
         love.graphics.line(pos)
 
         -- door
-        if true then
+        if get_door(square.east) then
             local pos = { 320 - 96 - 8 + offset, 32 + 16 }
             pos[3] = pos[1] - 16 + 1
             pos[4] = pos[2] + 16 - 1
@@ -490,7 +609,7 @@ function draw_wall_front_1_right()
     end
 
     -- draw north wall front 1
-    if true then
+    if get_wall(square.north) then
         local pos = { 128 + offset, 64 }
         pos[3] = pos[1] + 64
         pos[4] = pos[2]
@@ -508,7 +627,7 @@ function draw_wall_front_1_right()
         love.graphics.line(pos)
 
         -- door
-        if true then
+        if get_door(square.north) then
             local pos = { 128 + 8 + offset, 64 + 8 }
             pos[3] = pos[1] + 48
             pos[4] = pos[2]
