@@ -13,6 +13,10 @@ function MazeRenderer.static:getDoor(edge)
     return (edge or {}).door
 end
 
+function MazeRenderer.static:getEvent(face)
+    return (face or {}).event
+end
+
 function MazeRenderer.static:drawWall_front_1(square)
     square = square or {}
 
@@ -116,6 +120,46 @@ function MazeRenderer.static:drawWall_front_1(square)
             lg.line(pos[3], pos[4], pos[5], pos[6])
             --lg.line(pos)
             --lg.line(pos)
+        end
+    end
+    
+    -- draw floor event
+    if MazeRenderer:getEvent(square.floor) == 'stairs' then
+        local x = 96
+        local y = 176
+        local w = 128
+        local o = 8
+        lg.setColor(1, 1, 1)
+        lg.line(x, y, x + o, y - o)
+        lg.line(x + w, y, x + w - o, y - o)
+        local h = 0
+        for i = 1, w, 2 do
+            lg.line(x + i, y, x + i, y - h)
+            if i < o then
+                h = h + 2
+            elseif i > (w - o) then
+                h = h - 2
+            end
+        end
+    end
+    
+    -- draw ceiling event
+    if MazeRenderer:getEvent(square.ceiling) == 'stairs' then
+        local x = 96
+        local y = 16
+        local w = 128
+        local o = 8
+        lg.setColor(1, 1, 1)
+        lg.line(x, y, x + o, y + o)
+        lg.line(x + w, y, x + w - o, y + o)
+        local h = 0
+        for i = 1, w, 2 do
+            lg.line(x + i, y, x + i, y + h)
+            if i < o then
+                h = h + 2
+            elseif i > (w - o) then
+                h = h - 2
+            end
         end
     end
 end
@@ -303,6 +347,46 @@ function MazeRenderer.static:drawWall_front_2(square)
             lg.line(pos[1], pos[2], pos[3] - 1, pos[4])
             lg.line(pos[1], pos[2], pos[7], pos[8])
             lg.line(pos[3], pos[4], pos[5], pos[6])
+        end
+    end
+    
+    -- draw floor event
+    if MazeRenderer:getEvent(square.floor) == 'stairs' then
+        local x = 120
+        local y = 152
+        local w = 80
+        local o = 16
+        lg.setColor(1, 1, 1)
+        lg.line(x, y, x + o, y - o)
+        lg.line(x + w, y, x + w - o, y - o)
+        local h = 0
+        for i = 1, w, 2 do
+            lg.line(x + i, y, x + i, y - h)
+            if i < o then
+                h = h + 2
+            elseif i > (w - o) then
+                h = h - 2
+            end
+        end
+    end
+    
+    -- draw ceiling event
+    if MazeRenderer:getEvent(square.ceiling) == 'stairs' then
+        local x = 120
+        local y = 40
+        local w = 80
+        local o = 16
+        lg.setColor(1, 1, 1)
+        lg.line(x, y, x + o, y + o)
+        lg.line(x + w, y, x + w - o, y + o)
+        local h = 0
+        for i = 1, w, 2 do
+            lg.line(x + i, y, x + i, y + h)
+            if i < o then
+                h = h + 2
+            elseif i > (w - o) then
+                h = h - 2
+            end
         end
     end
 end

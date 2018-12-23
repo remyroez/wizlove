@@ -76,11 +76,11 @@ function love.load()
         front = {
             {
                 north = {
-                    wall = true,
+                    wall = false,
                     door = "default",
                 },
                 east = {
-                    wall = false,
+                    wall = true,
                     door = false,
                 },
                 south = {
@@ -88,8 +88,14 @@ function love.load()
                     door = "default",
                 },
                 west = {
-                    wall = false,
+                    wall = true,
                     door = false,
+                },
+                floor = {
+                    event = 'stairs',
+                },
+                ceiling = {
+                    event = 'stairs',
                 },
             },
             {
@@ -98,7 +104,7 @@ function love.load()
                     door = false,
                 },
                 east = {
-                    wall = false,
+                    wall = true,
                     door = false,
                 },
                 south = {
@@ -106,8 +112,14 @@ function love.load()
                     door = "default",
                 },
                 west = {
-                    wall = false,
+                    wall = true,
                     door = false,
+                },
+                floor = {
+                    event = 'stairs',
+                },
+                ceiling = {
+                    event = 'stairs',
                 },
             }
         },
