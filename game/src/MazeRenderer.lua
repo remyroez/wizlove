@@ -539,6 +539,47 @@ function MazeRenderer.static:drawWall_right_2(square)
     end
 end
 
+function MazeRenderer.static:drawFrame()
+    lg.setColor(0, 0, 0)
+    lg.rectangle('fill', 0, 0, 320, 8 * 2)
+    lg.rectangle('fill', 0, 200 - 8 * 3, 320, 8 * 3)
+    lg.rectangle('fill', 0, 0, 8 * 2, 200)
+    lg.rectangle('fill', 320 - 8 * 2, 0, 8 * 2, 200)
+    
+    lg.setColor(1, 1, 1)
+    lg.rectangle('line', 8 + 2, 8 + 2, 304 - 3, 176 - 3)
+    do
+        local pos = { 8 + 2, 8 + 1 }
+        pos[3] = pos[1] + 300
+        pos[4] = pos[2]
+        pos[5] = pos[3]
+        pos[6] = pos[4] + 2
+        pos[7] = pos[5] + 2
+        pos[8] = pos[6]
+
+        pos[9]  = pos[7]
+        pos[10] = pos[8] + 171
+        pos[11] = pos[9] - 2
+        pos[12] = pos[10]
+        pos[13] = pos[11]
+        pos[14] = pos[12] + 2
+        pos[15] = pos[1] + 1
+        pos[16] = pos[14]
+        pos[17] = pos[15]
+        pos[18] = pos[16] - 2
+        pos[19] = pos[17] - 2
+        pos[20] = pos[18]
+        pos[21] = pos[19]
+        pos[22] = pos[8]
+        pos[23] = pos[21] + 2
+        pos[24] = pos[22]
+        pos[25] = pos[23]
+        pos[26] = pos[24] - 2
+        lg.setColor(1, 1, 1)
+        lg.line(pos)
+    end
+end
+
 function MazeRenderer:initialize()
 end
 
@@ -560,6 +601,8 @@ function MazeRenderer:draw(view)
     MazeRenderer:drawWall_front_1(view.front[1])
 
     lg.pop()
+    
+    MazeRenderer:drawFrame()
 end
 
 return MazeRenderer

@@ -175,16 +175,7 @@ function love.draw()
 
     mazeRenderer:draw(view)
 
-    --lg.line(0, 32 - 96, 96, 32)
----[[
-    lg.setColor(0, 0, 0)
-    lg.rectangle('fill', 0, 0, 320, 8 * 2)
-    lg.rectangle('fill', 0, 200 - 8 * 3, 320, 8 * 3)
-    lg.rectangle('fill', 0, 0, 8 * 2, 200)
-    lg.rectangle('fill', 320 - 8 * 2, 0, 8 * 2, 200)
---]]
     lg.setColor(1, 1, 1)
-
     maid64.finish()
 end
 
