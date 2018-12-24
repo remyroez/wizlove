@@ -22,7 +22,7 @@ function MazeRenderer.static:drawWall_front_1(square)
 
     -- draw west wall
     if MazeRenderer:getWall(square.west) then
-        local pos = { 32, -32 }
+        local pos = { 24, -40 }
         pos[3] = pos[1] + 64
         pos[4] = pos[2] + 64
         pos[5] = pos[3]
@@ -40,7 +40,7 @@ function MazeRenderer.static:drawWall_front_1(square)
 
         -- door
         if MazeRenderer:getDoor(square.west) then
-            local pos = { 32 + 16, -32 + 32 }
+            local pos = { 24 + 16, -40 + 32 }
             pos[3] = pos[1] + 32
             pos[4] = pos[2] + 32
             pos[5] = pos[3]
@@ -55,7 +55,7 @@ function MazeRenderer.static:drawWall_front_1(square)
     
     -- draw east wall
     if MazeRenderer:getWall(square.east) then
-        local pos = { 320 - 32 + 1, -32 - 1 }
+        local pos = { 320 - 40 + 1, -40 - 1 }
         pos[3] = pos[1] - 64
         pos[4] = pos[2] + 64
         pos[5] = pos[3]
@@ -73,7 +73,7 @@ function MazeRenderer.static:drawWall_front_1(square)
 
         -- door
         if MazeRenderer:getDoor(square.east) then
-            local pos = { 320 - 32 + 1 - 16, -32 - 1 + 32 }
+            local pos = { 320 - 40 + 1 - 16, -40 - 1 + 32 }
             pos[3] = pos[1] - 32
             pos[4] = pos[2] + 32
             pos[5] = pos[3]
@@ -88,7 +88,7 @@ function MazeRenderer.static:drawWall_front_1(square)
     
     -- draw north wall
     if MazeRenderer:getWall(square.north) then
-        local pos = { 96, 32 }
+        local pos = { 88, 24 }
         pos[3] = pos[1] + 128 + 1
         pos[4] = pos[2]
         pos[5] = pos[3]
@@ -106,7 +106,7 @@ function MazeRenderer.static:drawWall_front_1(square)
 
         -- door
         if MazeRenderer:getDoor(square.north) then
-            local pos = { 96 + 16, 32 + 16 }
+            local pos = { 88 + 16, 24 + 16 }
             pos[3] = pos[1] + 96 + 1
             pos[4] = pos[2]
             pos[5] = pos[3]
@@ -125,8 +125,8 @@ function MazeRenderer.static:drawWall_front_1(square)
     
     -- draw floor event
     if MazeRenderer:getEvent(square.floor) == 'stairs' then
-        local x = 96
-        local y = 176
+        local x = 88
+        local y = 168
         local w = 128
         local o = 8
         lg.setColor(1, 1, 1)
@@ -145,8 +145,8 @@ function MazeRenderer.static:drawWall_front_1(square)
     
     -- draw ceiling event
     if MazeRenderer:getEvent(square.ceiling) == 'stairs' then
-        local x = 96
-        local y = 16
+        local x = 88
+        local y = 8
         local w = 128
         local o = 8
         lg.setColor(1, 1, 1)
@@ -169,7 +169,7 @@ function MazeRenderer.static:drawWall_left_1(square)
 
     -- draw north wall left 1
     if MazeRenderer:getWall(square.north) then
-        local pos = { 96 - 128 - 1, 32 }
+        local pos = { 88 - 128 - 1, 24 }
         pos[3] = pos[1] + 128 + 1
         pos[4] = pos[2]
         pos[5] = pos[3]
@@ -187,7 +187,7 @@ function MazeRenderer.static:drawWall_left_1(square)
 
         -- door
         if MazeRenderer:getDoor(square.north) then
-            local pos = { 96 - 128 - 1 + 16, 32 + 16 }
+            local pos = { 88 - 128 - 1 + 16, 24 + 16 }
             pos[3] = pos[1] + 96 + 1
             pos[4] = pos[2]
             pos[5] = pos[3]
@@ -210,7 +210,7 @@ function MazeRenderer.static:drawWall_right_1(square)
 
     -- draw north wall right 1
     if MazeRenderer:getWall(square.north) then
-        local pos = { 96 + 128 + 1, 32 }
+        local pos = { 88 + 128 + 1, 24 }
         pos[3] = pos[1] + 128 + 1
         pos[4] = pos[2]
         pos[5] = pos[3]
@@ -228,7 +228,7 @@ function MazeRenderer.static:drawWall_right_1(square)
 
         -- door
         if MazeRenderer:getDoor(square.north) then
-            local pos = { 96 + 128 + 1 + 16, 32 + 16 }
+            local pos = { 88 + 128 + 1 + 16, 24 + 16 }
             pos[3] = pos[1] + 96 + 1
             pos[4] = pos[2]
             pos[5] = pos[3]
@@ -251,7 +251,9 @@ function MazeRenderer.static:drawWall_front_2(square)
 
     -- draw west wall front 1
     if MazeRenderer:getWall(square.west) then
-        local pos = { 96, 32 }
+        local x = 88
+        local y = 24
+        local pos = { x, y }
         pos[3] = pos[1] + 32
         pos[4] = pos[2] + 32
         pos[5] = pos[3]
@@ -269,7 +271,7 @@ function MazeRenderer.static:drawWall_front_2(square)
 
         -- door
         if MazeRenderer:getDoor(square.west) then
-            local pos = { 96 + 8, 32 + 16 }
+            local pos = { x + 8, y + 16 }
             pos[3] = pos[1] + 16
             pos[4] = pos[2] + 16
             pos[5] = pos[3]
@@ -284,7 +286,9 @@ function MazeRenderer.static:drawWall_front_2(square)
 
     -- draw east wall front 1
     if MazeRenderer:getWall(square.east) then
-        local pos = { 320 + 1 - 96, 32 - 1 }
+        local x = 320 - 104
+        local y = 24
+        local pos = { x + 1, y - 1 }
         pos[3] = pos[1] - 32
         pos[4] = pos[2] + 32
         pos[5] = pos[3]
@@ -295,6 +299,311 @@ function MazeRenderer.static:drawWall_front_2(square)
         pos[10] = pos[2]
 
         lg.setColor(0, 0, 0)
+        lg.rectangle('fill', pos[1], pos[2], pos[5] - pos[1], pos[8] - pos[2])
+
+        lg.setColor(1, 1, 1)
+        lg.line(pos)
+
+        -- door
+        if MazeRenderer:getDoor(square.east) then
+            local pos = { x - 8, y + 16 }
+            pos[3] = pos[1] - 16 + 1
+            pos[4] = pos[2] + 16 - 1
+            pos[5] = pos[3]
+            pos[6] = pos[4] + 64 + 2 + 8
+            pos[7] = pos[1]
+            pos[8] = pos[6] + 32 - 16 - 1
+            pos[9] = pos[1] + 1
+            pos[10] = pos[2]
+            lg.line(pos)
+        end
+    end
+
+    -- draw north wall front 1
+    if MazeRenderer:getWall(square.north) then
+        local x = 120
+        local y = 56
+        local pos = { x, y }
+        pos[3] = pos[1] + 64 + 1
+        pos[4] = pos[2]
+        pos[5] = pos[3]
+        pos[6] = pos[4] + 64 + 1
+        pos[7] = pos[5] - 64 - 1
+        pos[8] = pos[6]
+        pos[9] = pos[1]
+        pos[10] = pos[2]
+
+        lg.setColor(0, 0, 0)
+        lg.rectangle('fill', pos[1], pos[2], pos[5] - pos[1], pos[8] - pos[2])
+
+        lg.setColor(1, 1, 1)
+        lg.line(pos)
+
+        -- door
+        if MazeRenderer:getDoor(square.north) then
+            local pos = { x + 8, y + 8 }
+            pos[3] = pos[1] + 48 + 1
+            pos[4] = pos[2]
+            pos[5] = pos[3]
+            pos[6] = pos[4] + 56 + 1
+            pos[7] = pos[5] - 48 - 1
+            pos[8] = pos[6]
+            pos[9] = pos[1]
+            pos[10] = pos[2]
+            lg.line(pos[1], pos[2], pos[3] - 1, pos[4])
+            lg.line(pos[1], pos[2], pos[7], pos[8])
+            lg.line(pos[3], pos[4], pos[5], pos[6])
+        end
+    end
+    
+    -- draw floor event
+    if MazeRenderer:getEvent(square.floor) == 'stairs' then
+        local x = 112
+        local y = 144
+        local w = 80
+        local o = 16
+        lg.setColor(1, 1, 1)
+        lg.line(x, y, x + o, y - o)
+        lg.line(x + w, y, x + w - o, y - o)
+        local h = 0
+        for i = 1, w, 2 do
+            lg.line(x + i, y, x + i, y - h)
+            if i < o then
+                h = h + 2
+            elseif i > (w - o) then
+                h = h - 2
+            end
+        end
+    end
+    
+    -- draw ceiling event
+    if MazeRenderer:getEvent(square.ceiling) == 'stairs' then
+        local x = 112
+        local y = 32
+        local w = 80
+        local o = 16
+        lg.setColor(1, 1, 1)
+        lg.line(x, y, x + o, y + o)
+        lg.line(x + w, y, x + w - o, y + o)
+        local h = 0
+        for i = 1, w, 2 do
+            lg.line(x + i, y, x + i, y + h)
+            if i < o then
+                h = h + 2
+            elseif i > (w - o) then
+                h = h - 2
+            end
+        end
+    end
+end
+
+function MazeRenderer.static:drawWall_left_2(square)
+    square = square or {}
+
+    local offset = -64
+
+    -- draw west wall front 2
+    if MazeRenderer:getWall(square.west) then
+        local x = 88
+        local y = 24
+        local pos = { x + offset, y }
+        pos[3] = pos[1] + 32
+        pos[4] = pos[2] + 32
+        pos[5] = pos[3]
+        pos[6] = pos[4] + 64
+        pos[7] = pos[1]
+        pos[8] = pos[6] + 32
+        pos[9] = pos[1]
+        pos[10] = pos[2]
+
+        lg.setColor(0, 0, 0)
+        lg.rectangle('fill', pos[1], pos[2], pos[5] - pos[1], pos[8] - pos[2])
+
+        lg.setColor(1, 1, 1)
+        lg.line(pos)
+
+        -- door
+        if MazeRenderer:getDoor(square.west) then
+            local pos = { x + offset + 8, y + 16 }
+            pos[3] = pos[1] + 16
+            pos[4] = pos[2] + 16
+            pos[5] = pos[3]
+            pos[6] = pos[4] + 64 + 8
+            pos[7] = pos[1]
+            pos[8] = pos[6] + 32 - 16
+            pos[9] = pos[1] - 1
+            pos[10] = pos[2]
+            lg.line(pos)
+        end
+    end
+
+    -- draw north wall front 2
+    if MazeRenderer:getWall(square.north) then
+        local x = 120
+        local y = 56
+        local pos = { x + offset, y }
+        pos[3] = pos[1] + 64
+        pos[4] = pos[2]
+        pos[5] = pos[3]
+        pos[6] = pos[4] + 64 + 1
+        pos[7] = pos[5] - 64
+        pos[8] = pos[6]
+        pos[9] = pos[1]
+        pos[10] = pos[2]
+
+        lg.setColor(0, 0, 0)
+        lg.rectangle('fill', pos[1], pos[2], pos[5] - pos[1], pos[8] - pos[2])
+
+        lg.setColor(1, 1, 1)
+        lg.line(pos)
+
+        -- door
+        if MazeRenderer:getDoor(square.north) then
+            local pos = { x + offset + 8, y + 8 }
+            pos[3] = pos[1] + 48
+            pos[4] = pos[2]
+            pos[5] = pos[3]
+            pos[6] = pos[4] + 56 + 1
+            pos[7] = pos[5] - 48
+            pos[8] = pos[6]
+            pos[9] = pos[1]
+            pos[10] = pos[2]
+            lg.line(pos[1], pos[2], pos[3] - 1, pos[4])
+            lg.line(pos[1], pos[2], pos[7], pos[8])
+            lg.line(pos[3], pos[4], pos[5], pos[6])
+        end
+    end
+end
+
+function MazeRenderer.static:drawWall_right_2(square)
+    square = square or {}
+
+    local offset = 64 + 1
+
+    -- draw east wall front 2
+    if MazeRenderer:getWall(square.east) then
+        local x = 320 - 104
+        local y = 24
+        local pos = { x + offset + 1, y - 1 }
+        pos[3] = pos[1] - 32
+        pos[4] = pos[2] + 32
+        pos[5] = pos[3]
+        pos[6] = pos[4] + 64 + 2
+        pos[7] = pos[5] + 32
+        pos[8] = pos[6] + 32
+        pos[9] = pos[1]
+        pos[10] = pos[2]
+
+        lg.setColor(0, 0, 0)
+        lg.rectangle('fill', pos[1], pos[2], pos[5] - pos[1], pos[8] - pos[2])
+
+        lg.setColor(1, 1, 1)
+        lg.line(pos)
+
+        -- door
+        if MazeRenderer:getDoor(square.east) then
+            local pos = { x + offset - 8, y + 16 }
+            pos[3] = pos[1] - 16 + 1
+            pos[4] = pos[2] + 16 - 1
+            pos[5] = pos[3]
+            pos[6] = pos[4] + 64 + 2 + 8
+            pos[7] = pos[1]
+            pos[8] = pos[6] + 32 - 16 - 1
+            pos[9] = pos[1] + 1
+            pos[10] = pos[2]
+            lg.line(pos)
+        end
+    end
+
+    -- draw north wall front 1
+    if MazeRenderer:getWall(square.north) then
+        local x = 120
+        local y = 56
+        local pos = { x + offset, y }
+        pos[3] = pos[1] + 64
+        pos[4] = pos[2]
+        pos[5] = pos[3]
+        pos[6] = pos[4] + 64 + 1
+        pos[7] = pos[5] - 64
+        pos[8] = pos[6]
+        pos[9] = pos[1]
+        pos[10] = pos[2]
+
+        lg.setColor(0, 0, 0)
+        lg.rectangle('fill', pos[1], pos[2], pos[5] - pos[1], pos[8] - pos[2])
+
+        lg.setColor(1, 1, 1)
+        lg.line(pos)
+
+        -- door
+        if MazeRenderer:getDoor(square.north) then
+            local pos = { x + offset + 8, y + 8 }
+            pos[3] = pos[1] + 48
+            pos[4] = pos[2]
+            pos[5] = pos[3]
+            pos[6] = pos[4] + 56 + 1
+            pos[7] = pos[5] - 48
+            pos[8] = pos[6]
+            pos[9] = pos[1]
+            pos[10] = pos[2]
+            lg.line(pos[1], pos[2], pos[3] - 1, pos[4])
+            lg.line(pos[1], pos[2], pos[7], pos[8])
+            lg.line(pos[3], pos[4], pos[5], pos[6])
+        end
+    end
+end
+
+function MazeRenderer.static:drawWall_front_3(square)
+    if true then return end
+
+    square = square or {}
+
+    -- draw west wall front 3
+    if MazeRenderer:getWall(square.west) then
+        local pos = { 128, 64 }
+        pos[3] = pos[1] + 16
+        pos[4] = pos[2] + 16
+        pos[5] = pos[3]
+        pos[6] = pos[4] + 32
+        pos[7] = pos[1]
+        pos[8] = pos[6] + 16
+        pos[9] = pos[1]
+        pos[10] = pos[2]
+
+        lg.setColor(0, 0, 0)
+        lg.rectangle('fill', pos[1], pos[2] - 1, pos[5] - pos[1], pos[8] - pos[2] + 2)
+
+        lg.setColor(1, 1, 1)
+        lg.line(pos)
+
+        -- door
+        if MazeRenderer:getDoor(square.west) then
+            local pos = { 128 + 4, 64 + 8 }
+            pos[3] = pos[1] + 8
+            pos[4] = pos[2] + 8
+            pos[5] = pos[3]
+            pos[6] = pos[4] + 32 + 4
+            pos[7] = pos[1]
+            pos[8] = pos[6] + 16 - 8
+            pos[9] = pos[1]
+            pos[10] = pos[2]
+            lg.line(pos)
+        end
+    end
+
+    -- draw east wall front 3
+    if MazeRenderer:getWall(square.east) then
+        local pos = { 320 - 128 + 1, 64 - 1 }
+        pos[3] = pos[1] - 16
+        pos[4] = pos[2] + 16
+        pos[5] = pos[3]
+        pos[6] = pos[4] + 32 + 2
+        pos[7] = pos[1]
+        pos[8] = pos[6] + 16
+        pos[9] = pos[1]
+        pos[10] = pos[2]
+
+        lg.setColor(0.5, 0.5, 0.5)
         lg.rectangle('fill', pos[1], pos[2], pos[5] - pos[1], pos[8] - pos[2])
 
         lg.setColor(1, 1, 1)
@@ -391,165 +700,32 @@ function MazeRenderer.static:drawWall_front_2(square)
     end
 end
 
-function MazeRenderer.static:drawWall_left_2(square)
-    square = square or {}
-
-    local offset = -64
-
-    -- draw west wall front 1
-    if MazeRenderer:getWall(square.west) then
-        local pos = { 96 + offset, 32 }
-        pos[3] = pos[1] + 32
-        pos[4] = pos[2] + 32
-        pos[5] = pos[3]
-        pos[6] = pos[4] + 64
-        pos[7] = pos[1]
-        pos[8] = pos[6] + 32
-        pos[9] = pos[1]
-        pos[10] = pos[2]
-
-        lg.setColor(0, 0, 0)
-        lg.rectangle('fill', pos[1], pos[2], pos[5] - pos[1], pos[8] - pos[2])
-
-        lg.setColor(1, 1, 1)
-        lg.line(pos)
-
-        -- door
-        if MazeRenderer:getDoor(square.west) then
-            local pos = { 96 + 8 + offset, 32 + 16 }
-            pos[3] = pos[1] + 16
-            pos[4] = pos[2] + 16
-            pos[5] = pos[3]
-            pos[6] = pos[4] + 64 + 8
-            pos[7] = pos[1]
-            pos[8] = pos[6] + 32 - 16
-            pos[9] = pos[1] - 1
-            pos[10] = pos[2]
-            lg.line(pos)
-        end
-    end
-
-    -- draw north wall front 1
-    if MazeRenderer:getWall(square.north) then
-        local pos = { 128 + offset, 64 }
-        pos[3] = pos[1] + 64
-        pos[4] = pos[2]
-        pos[5] = pos[3]
-        pos[6] = pos[4] + 64 + 1
-        pos[7] = pos[5] - 64
-        pos[8] = pos[6]
-        pos[9] = pos[1]
-        pos[10] = pos[2]
-
-        lg.setColor(0, 0, 0)
-        lg.rectangle('fill', pos[1], pos[2], pos[5] - pos[1], pos[8] - pos[2])
-
-        lg.setColor(1, 1, 1)
-        lg.line(pos)
-
-        -- door
-        if MazeRenderer:getDoor(square.north) then
-            local pos = { 128 + 8 + offset, 64 + 8 }
-            pos[3] = pos[1] + 48
-            pos[4] = pos[2]
-            pos[5] = pos[3]
-            pos[6] = pos[4] + 56 + 1
-            pos[7] = pos[5] - 48
-            pos[8] = pos[6]
-            pos[9] = pos[1]
-            pos[10] = pos[2]
-            lg.line(pos[1], pos[2], pos[3] - 1, pos[4])
-            lg.line(pos[1], pos[2], pos[7], pos[8])
-            lg.line(pos[3], pos[4], pos[5], pos[6])
-        end
-    end
+function MazeRenderer.static:drawWall_left_3(square)
 end
 
-function MazeRenderer.static:drawWall_right_2(square)
-    square = square or {}
-
-    local offset = 64 + 1
-
-    -- draw east wall front 1
-    if MazeRenderer:getWall(square.east) then
-        local pos = { 320 + 1 - 96 + offset, 32 - 1 }
-        pos[3] = pos[1] - 32
-        pos[4] = pos[2] + 32
-        pos[5] = pos[3]
-        pos[6] = pos[4] + 64 + 2
-        pos[7] = pos[5] + 32
-        pos[8] = pos[6] + 32
-        pos[9] = pos[1]
-        pos[10] = pos[2]
-
-        lg.setColor(0, 0, 0)
-        lg.rectangle('fill', pos[1], pos[2], pos[5] - pos[1], pos[8] - pos[2])
-
-        lg.setColor(1, 1, 1)
-        lg.line(pos)
-
-        -- door
-        if MazeRenderer:getDoor(square.east) then
-            local pos = { 320 - 96 - 8 + offset, 32 + 16 }
-            pos[3] = pos[1] - 16 + 1
-            pos[4] = pos[2] + 16 - 1
-            pos[5] = pos[3]
-            pos[6] = pos[4] + 64 + 2 + 8
-            pos[7] = pos[1]
-            pos[8] = pos[6] + 32 - 16 - 1
-            pos[9] = pos[1] + 1
-            pos[10] = pos[2]
-            lg.line(pos)
-        end
-    end
-
-    -- draw north wall front 1
-    if MazeRenderer:getWall(square.north) then
-        local pos = { 128 + offset, 64 }
-        pos[3] = pos[1] + 64
-        pos[4] = pos[2]
-        pos[5] = pos[3]
-        pos[6] = pos[4] + 64 + 1
-        pos[7] = pos[5] - 64
-        pos[8] = pos[6]
-        pos[9] = pos[1]
-        pos[10] = pos[2]
-
-        lg.setColor(0, 0, 0)
-        lg.rectangle('fill', pos[1], pos[2], pos[5] - pos[1], pos[8] - pos[2])
-
-        lg.setColor(1, 1, 1)
-        lg.line(pos)
-
-        -- door
-        if MazeRenderer:getDoor(square.north) then
-            local pos = { 128 + 8 + offset, 64 + 8 }
-            pos[3] = pos[1] + 48
-            pos[4] = pos[2]
-            pos[5] = pos[3]
-            pos[6] = pos[4] + 56 + 1
-            pos[7] = pos[5] - 48
-            pos[8] = pos[6]
-            pos[9] = pos[1]
-            pos[10] = pos[2]
-            lg.line(pos[1], pos[2], pos[3] - 1, pos[4])
-            lg.line(pos[1], pos[2], pos[7], pos[8])
-            lg.line(pos[3], pos[4], pos[5], pos[6])
-        end
-    end
+function MazeRenderer.static:drawWall_right_3(square)
 end
 
-function MazeRenderer.static:drawFrame()
+function MazeRenderer.static:drawWall_front_4(square)
+end
+
+function MazeRenderer.static:drawWall_left_4(square)
+end
+
+function MazeRenderer.static:drawWall_right_4(square)
+end
+
+function MazeRenderer:drawFrame()
     lg.setColor(0, 0, 0)
-    lg.rectangle('fill', 0, 0, 320, 8 * 2)
-    lg.rectangle('fill', 0, 200 - 8 * 3, 320, 8 * 3)
-    lg.rectangle('fill', 0, 0, 8 * 2, 200)
-    lg.rectangle('fill', 320 - 8 * 2, 0, 8 * 2, 200)
-    
+    lg.rectangle('fill', 0, 0, self.width, 8)
+    lg.rectangle('fill', 0, self.height - 8, self.width, 8)
+    lg.rectangle('fill', 0, 0, 8, self.height)
+    lg.rectangle('fill', self.width - 8, 0, 8, self.height)
+
     lg.setColor(1, 1, 1)
-    lg.rectangle('line', 8 + 2, 8 + 2, 304 - 3, 176 - 3)
+    lg.rectangle('line', 2, 2, 304 - 3, 176 - 3)
     do
-        local pos = { 8 + 2, 8 + 1 }
+        local pos = { 2, 1 }
         pos[3] = pos[1] + 300
         pos[4] = pos[2]
         pos[5] = pos[3]
@@ -581,28 +757,81 @@ function MazeRenderer.static:drawFrame()
 end
 
 function MazeRenderer:initialize()
+    self.width = 8 * 38
+    self.height = 8 * 22
+    self.dirty = false
+    self:setupCanvas()
+    self:setupPattern()
+    self:resetView()
 end
 
-function MazeRenderer:draw(view)
-    view = view or {}
-    view.front = view.front or {}
-    view.left = view.left or {}
-    view.right = view.right or {}
+function MazeRenderer:setupCanvas()
+    self.canvas = lg.newCanvas(self.width, self.height)
+end
 
-    lg.push()
-    --lg.translate(0, -100)
+function MazeRenderer:setupPattern()
+    self.pattern = lg.newCanvas(8, 8)
+    self.pattern:setFilter("nearest")
+    self.pattern:setWrap("repeat")
 
-    MazeRenderer:drawWall_left_2(view.left[2])
-    MazeRenderer:drawWall_right_2(view.right[2])
-    MazeRenderer:drawWall_front_2(view.front[2])
+    lg.setLineStyle('rough')
 
-    MazeRenderer:drawWall_left_1(view.left[1])
-    MazeRenderer:drawWall_right_1(view.right[1])
-    MazeRenderer:drawWall_front_1(view.front[1])
+    lg.setCanvas(self.pattern)
+    lg.clear(0, 0, 0)
 
-    lg.pop()
+    lg.setColor(1, 1, 1)
+    for i = 0, 8, 2 do
+        lg.line(i, 0, i + 8, 8)
+        lg.line(0, i, 8, i + 8)
+    end
+
+    lg.setCanvas()
     
-    MazeRenderer:drawFrame()
+    self.quad = lg.newQuad(0, 0, 8 * 38, 8 * 22, self.pattern:getDimensions())
+end
+
+function MazeRenderer:resetView(view)
+    self.view = view or {}
+    self.view.front = self.view.front or {}
+    self.view.left = self.view.left or {}
+    self.view.right = self.view.right or {}
+
+    self.dirty = true
+end
+
+function MazeRenderer:renderView()
+    local canvas = lg.getCanvas()
+
+    lg.setCanvas(self.canvas)
+    lg.clear(0, 0, 0)
+
+    MazeRenderer:drawWall_left_4(self.view.left[4])
+    MazeRenderer:drawWall_right_4(self.view.right[4])
+    MazeRenderer:drawWall_front_4(self.view.front[4])
+
+    MazeRenderer:drawWall_left_3(self.view.left[3])
+    MazeRenderer:drawWall_right_3(self.view.right[3])
+    MazeRenderer:drawWall_front_3(self.view.front[3])
+
+    MazeRenderer:drawWall_left_2(self.view.left[2])
+    MazeRenderer:drawWall_right_2(self.view.right[2])
+    MazeRenderer:drawWall_front_2(self.view.front[2])
+
+    MazeRenderer:drawWall_left_1(self.view.left[1])
+    MazeRenderer:drawWall_right_1(self.view.right[1])
+    MazeRenderer:drawWall_front_1(self.view.front[1])
+    
+    self:drawFrame()
+
+    lg.setCanvas(canvas)
+end
+
+function MazeRenderer:draw(...)
+
+    if self.dirty then self:renderView() end
+
+    lg.setColor(1, 1, 1)
+    lg.draw(self.canvas, ...)
 end
 
 return MazeRenderer

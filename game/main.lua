@@ -39,7 +39,7 @@ function love.load()
             {
                 north = {
                     wall = false,
-                    door = false,
+                    door = true,
                 },
                 east = {
                     wall = true,
@@ -57,7 +57,7 @@ function love.load()
             {
                 north = {
                     wall = true,
-                    door = false,
+                    door = true,
                 },
                 east = {
                     wall = true,
@@ -80,16 +80,16 @@ function love.load()
                     door = "default",
                 },
                 east = {
-                    wall = true,
-                    door = false,
+                    wall = false,
+                    door = true,
                 },
                 south = {
                     wall = true,
                     door = "default",
                 },
                 west = {
-                    wall = true,
-                    door = false,
+                    wall = false,
+                    door = true,
                 },
                 floor = {
                     event = 'stairs',
@@ -101,19 +101,43 @@ function love.load()
             {
                 north = {
                     wall = true,
-                    door = false,
+                    door = true,
                 },
                 east = {
-                    wall = true,
-                    door = false,
+                    wall = false,
+                    door = true,
                 },
                 south = {
                     wall = true,
                     door = "default",
                 },
                 west = {
-                    wall = true,
+                    wall = false,
+                    door = true,
+                },
+                floor = {
+                    event = 'stairs',
+                },
+                ceiling = {
+                    event = 'stairs',
+                },
+            },
+            {
+                north = {
+                    wall = false,
                     door = false,
+                },
+                east = {
+                    wall = true,
+                    door = true,
+                },
+                south = {
+                    wall = true,
+                    door = true,
+                },
+                west = {
+                    wall = true,
+                    door = true,
                 },
                 floor = {
                     event = 'stairs',
@@ -127,7 +151,7 @@ function love.load()
             {
                 north = {
                     wall = false,
-                    door = false,
+                    door = true,
                 },
                 east = {
                     wall = true,
@@ -145,7 +169,7 @@ function love.load()
             {
                 north = {
                     wall = true,
-                    door = false,
+                    door = true,
                 },
                 east = {
                     wall = false,
@@ -162,6 +186,8 @@ function love.load()
             }
         }
     }
+
+    mazeRenderer:resetView(view)
 end
 
 function love.update(dt)
@@ -173,7 +199,7 @@ function love.draw()
     maid64.start()
     lg.clear(0, 0, 0)
 
-    mazeRenderer:draw(view)
+    mazeRenderer:draw(8, 8)
 
     lg.setColor(1, 1, 1)
     maid64.finish()
